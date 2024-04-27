@@ -4,25 +4,25 @@
     {
       "date": "{{release_date}}",
       "title": "Updates for Open Rails",
-	    "updateMode": "stable",
-	    "comment": "No special checks for the latest version",
+      "updateMode": "stable",
+      "comment": "No special checks for the latest version",
       "prefixItemList": [
         {
-		      "$type":"ORTS.Record, Menu",
+          "$type":"ORTS.Record, Menu",
           "label": "Latest version available",
           "value": "{{latest_version}}",
           "indent": 145,
           "color": "black"
         },
         {
-		      "$type":"ORTS.Record, Menu",
+          "$type":"ORTS.Record, Menu",
           "label": "Installed version",
           "value": "{{installed_version}}",
           "indent": 145,
           "color": "black"
         },
         {
-		      "$type":"ORTS.Record, Menu",
+          "$type":"ORTS.Record, Menu",
           "label": "Update mode",
           "value": "{{update_mode}}   (To change Update Mode, use Options > System.)",
           "indent": 145,
@@ -35,7 +35,7 @@
             "$type":"ORTS.Link, Menu",
             "label": "What's new",
             "value": "Find out on-line what's new in this version.",
-            "Url": "https://www.openrails.org/discover/latest_stable_version",
+            "url": "https://www.openrails.org/discover/latest_stable_version",
             "indent": 145,
             "color": "black"
           },
@@ -54,7 +54,7 @@
         ]
       },
       "suffixItemList": [
-	    ]
+      ]
     },
     {
       "date": "{{release_date}}",
@@ -70,14 +70,14 @@
           "color": "black"
         },
         {
-	        "$type":"ORTS.Record, Menu",
+          "$type":"ORTS.Record, Menu",
           "value": "{{installed_version}}",
           "label": "Installed version",
           "indent": 145,
           "color": "black"
         },
-	      {
-	        "$type":"ORTS.Record, Menu",
+        {
+          "$type":"ORTS.Record, Menu",
           "value": "{{update_mode}}   (To change Update Mode, use Options > System.)",
           "label": "Update mode",
           "indent": 145,
@@ -89,7 +89,7 @@
           {
             "$type":"ORTS.Link, Menu",
             "value": "Find out on-line what's new in this version.",
-            "Url": "https://www.openrails.org/download/changes/",
+            "url": "https://www.openrails.org/download/changes/",
             "label": "What's new",
             "indent": 145,
             "color": "black"
@@ -109,13 +109,13 @@
         ]
       },
       "suffixItemList": [
-	    ]
+      ]
     },
-	  {
+    {
       "date": "{{release_date}}",
       "title": "Updates for Open Rails",
-	    "updateMode": "unstable",
-	    "comment": "No special checks for the latest version",
+      "updateMode": "unstable",
+      "comment": "No special checks for the latest version",
       "prefixItemList": [
         {
           "$type":"ORTS.Record, Menu",
@@ -125,14 +125,14 @@
           "color": "black"
         },
         {
-		      "$type":"ORTS.Record, Menu",
+          "$type":"ORTS.Record, Menu",
           "value": "{{installed_version}}",
           "label": "Installed version",
           "indent": 145,
           "color": "black"
         },
         {
-	        "$type":"ORTS.Record, Menu",
+          "$type":"ORTS.Record, Menu",
           "value": "{{update_mode}}   (To change Update Mode, use Options > System.)",
           "label": "Update mode",
           "indent": 145,
@@ -144,7 +144,7 @@
           {
             "$type":"ORTS.Link, Menu",
             "value": "Find out on-line what's new in this version.",
-            "Url": "https://james-ross.co.uk/projects/or",
+            "url": "https://james-ross.co.uk/projects/or",
             "label": "What's new",
             "indent": 145,
             "color": "black"
@@ -164,29 +164,29 @@
         ]
       },
       "suffixItemList": [
-	  ]
-    }	
+    ]
+    }  
   ],
   "checkList": [
     {
       "id": "not_updated",
       "comment": "If up to date, then latest_version == installed_version or latest_version == 'none'",
-	  "includesAnyOf": [],
+      "includesAnyOf": [],
       "excludesAnyOf": [
         {
-	      "$type":"ORTS.Contains, Menu",
+          "$type":"ORTS.Contains, Menu",
           "name": "installed_version",
-	      "value": "{{latest_version}}"
+          "value": "{{latest_version}}"
         },
-		{
-	      "$type":"ORTS.Contains, Menu",
+        {
+          "$type":"ORTS.Contains, Menu",
           "name": "none",
-	      "value": "{{latest_version}}"
+          "value": "{{latest_version}}"
         }
       ],
-	  "unmetItemList": [
+    "unmetItemList": [
         {
-	      "$type":"ORTS.Link, Menu",
+          "$type":"ORTS.Link, Menu",
           "value": "Find out on-line what was new in your installed version.",
           "url": "https://www.openrails.org/discover/latest_stable_version",
           "label": "What's new",
@@ -197,29 +197,29 @@
     },
     {
       "id": "not_direct3d_10_0",
-	  "comment": "Windows 7 onwards have software but may lack hardware for Direct3D 10.0",
+      "comment": "Windows 7 onwards have software but may lack hardware for Direct3D 10.0",
       "includesAnyOf": [
         {
-	      "$type":"ORTS.Contains, Menu",
+          "$type":"ORTS.Contains, Menu",
           "name": "direct3d",
-	      "value": "10_0"
+          "value": "10_0"
         }
       ],
       "excludesAllOf": [],
-	  "unmetItemList": [
+    "unmetItemList": [
         {
-	      "$type":"ORTS.Heading, Menu",
+          "$type":"ORTS.Heading, Menu",
           "label": "Install not available.",
           "color": "red"
         },
         {
-	      "$type":"ORTS.Text, Menu",
+          "$type":"ORTS.Text, Menu",
           "label": "This version cannot be installed on your system until the graphics card has been upgraded.",
           "indent": 145,
           "color": "black"
         },
         {
-	      "$type":"ORTS.Link, Menu",
+          "$type":"ORTS.Link, Menu",
           "value": "Find out on-line about graphics card needed.",
           "url": "https://www.openrails.org/learn/faq/#hardware_requirements",
           "label": "Graphics card",
@@ -227,6 +227,6 @@
           "color": "black"
         }
       ]
-    }	
+    }  
   ]
 }

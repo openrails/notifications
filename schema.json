@@ -1,236 +1,293 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
-    "type": "object",
-    "required": ["notificationList"],
-    "additionalProperties": false,
-    "properties": {
-        "$schema": {
-            "type": "string"
-        },
-        "notificationList": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "required": ["name", "description"],
-                "additionalProperties": false,
-                "properties": {
-                    "date": {
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "updateChannel": {
-                        "type": "string",
-                        "enum": ["stable", "testing", "unstable"]
-                    },
-                    "prefixItemList": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/item"
-                        }
-                    },
-                    "metLists": {
-                        "type": "object",
-                        "required": ["itemList", "checkIdList"],
-                        "additionalProperties": false,
-                        "properties": {
-                            "itemList": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/definitions/item"
-                                }
-                            },
-                            "checkIdList": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "required": ["id"],
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "id": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "suffixItemList": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/item"
-                        }
-                    }
-                }
-            }
-        },
-        "checkList": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "required": ["id", "description"],
-                "additionalProperties": false,
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "includesAnyOf": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/check"
-                        }
-                    },
-                    "excludesAllOf": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/check"
-                        }
-                    },
-                    "unmetItemList": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/item"
-                        }
-                    }
-                }
-            }
-        }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for notifications/menu",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
     },
-    "definitions": {
-        "item": {
-            "oneOf": [
-                {
-                    "type": "object",
-                    "required": ["$type", "label"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "$type": {
-                            "const": "ORTS.Text, Menu"
-                        },
-                        "label": {
-                            "type": "string"
-                        },
-                        "indent": {
-                            "type": "integer"
-                        },
-                        "color": {
-                            "type": "string"
-                        }
-                    }
-                },
-                {
-                    "type": "object",
-                    "required": ["$type", "label"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "$type": {
-                            "const": "ORTS.Heading, Menu"
-                        },
-                        "label": {
-                            "type": "string"
-                        },
-                        "indent": {
-                            "type": "integer"
-                        },
-                        "color": {
-                            "type": "string"
-                        }
-                    }
-                },
-                {
-                    "type": "object",
-                    "required": ["$type", "label", "url"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "$type": {
-                            "const": "ORTS.Link, Menu"
-                        },
-                        "label": {
-                            "type": "string"
-                        },
-                        "value": {
-                            "type": "string"
-                        },
-                        "url": {
-                            "type": "string"
-                        },
-                        "indent": {
-                            "type": "integer"
-                        },
-                        "color": {
-                            "type": "string"
-                        }
-                    }
-                },
-                {
-                    "type": "object",
-                    "required": ["$type", "label", "value"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "$type": {
-                            "const": "ORTS.Record, Menu"
-                        },
-                        "label": {
-                            "type": "string"
-                        },
-                        "value": {
-                            "type": "string"
-                        },
-                        "indent": {
-                            "type": "integer"
-                        },
-                        "color": {
-                            "type": "string"
-                        }
-                    }
-                },
-                {
-                    "type": "object",
-                    "required": ["$type", "label", "value"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "$type": {
-                            "const": "ORTS.Update, Menu"
-                        },
-                        "label": {
-                            "type": "string"
-                        },
-                        "value": {
-                            "type": "string"
-                        },
-                        "indent": {
-                            "type": "integer"
-                        },
-                        "color": {
-                            "type": "string"
-                        }
-                    }
-                }
-            ]
-        },
-        "check": {
-            "type": "object",
-            "required": ["$type"],
-            "additionalProperties": false,
-            "properties": {
+    "notificationList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "updateMode": {
+            "type": "string"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "prefixItemList": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
                 "$type": {
-                    "type": "string",
-                    "enum": ["ORTS.Contains, Menu"]
-                },
-                "name": {
-                    "type": "string"
+                  "type": "string"
                 },
                 "value": {
-                    "type": "string"
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "indent": {
+                  "type": "number"
+                },
+                "color": {
+                  "type": "string"
                 }
+              },
+              "required": [
+                "$type",
+                "label"
+              ]
             }
-        }
+          },
+          "metLists": {
+            "type": "object",
+            "properties": {
+              "itemList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "$type": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "indent": {
+                      "type": "number"
+                    },
+                    "color": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "$type",
+                    "label"
+                  ]
+                }
+              },
+              "checkIdList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "itemList",
+              "checkIdList"
+            ]
+          },
+          "suffixItemList": {
+            "type": "array",
+            "items": {}
+          },
+          "prefixitemList": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "$type": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "indent": {
+                  "type": "number"
+                },
+                "color": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "$type",
+                "label"
+              ]
+            }
+          }
+        },
+        "required": [
+          "date",
+          "title",
+          "metLists"
+        ]
+      }
+    },
+    "checkList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "includesAnyOf": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "$type": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "$type",
+                "name",
+                "value"
+              ]
+            }
+          },
+          "excludesAnyOf": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "$type": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "$type",
+                "name",
+                "value"
+              ]
+            }
+          },
+		  "excludesAllOf": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "$type": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "$type",
+                "name",
+                "value"
+              ]
+            }
+          },
+		  "includesAllOf": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "$type": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "$type",
+                "name",
+                "value"
+              ]
+            }
+          },
+          "unmetItemList": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "$type": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "indent": {
+                  "type": "number"
+                },
+                "color": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "$type",
+                "label"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "unmetItemList"
+        ]
+      }
     }
+  },
+  "required": [
+    "$schema",
+    "notificationList",
+    "checkList"
+  ]
 }
