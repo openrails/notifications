@@ -1,60 +1,55 @@
 {
-  "$schema": "./schema.json",
+  "$schema": "https://github.com/openrails/notifications/blob/f2717000c5d94da99513e9921530fdd10ea449fa/schema.json",
   "notificationList": [
     {
       "date": "{{release_date}}",
       "title": "Updates for Open Rails",
-      "updateMode": "stable",
-      "comment": "No special checks for the latest version",
+	    "updateMode": "stable",
+	    "comment": "No special checks for the latest version",
       "prefixItemList": [
         {
-          "$type":"ORTS.Record, Menu",
+		      "$type":"ORTS.Record, Menu",
           "label": "Latest version available",
-          "value": "{{latest_version}}",
-          "indent": 145,
-          "color": "black"
+          "value": "{{latest_version}}"
         },
         {
-          "$type":"ORTS.Record, Menu",
+		      "$type":"ORTS.Record, Menu",
           "label": "Installed version",
-          "value": "{{installed_version}}",
-          "indent": 145,
-          "color": "black"
+          "value": "{{installed_version}}"
         },
         {
-          "$type":"ORTS.Record, Menu",
+		      "$type":"ORTS.Record, Menu",
           "label": "Update mode",
-          "value": "{{update_mode}}   (To change Update Mode, use Options > System.)",
-          "indent": 145,
-          "color": "black"
+          "value": "{{update_mode}}   (To change Update Mode, use Options > System.)"
         }
       ],
-      "metLists": {
+      "met": {
         "itemList": [
+          {
+            "$type":"ORTS.Heading, Menu",
+            "label": "New version available"
+          },
           {
             "$type":"ORTS.Link, Menu",
             "label": "What's new",
             "value": "Find out on-line what's new in this version.",
-            "url": "https://www.openrails.org/discover/latest_stable_version",
-            "indent": 145,
-            "color": "black"
+            "Url": "https://www.openrails.org/discover/latest_stable_version"
           },
           {
             "$type":"ORTS.Update, Menu",
             "label": "Install",
-            "value": "Install the latest Stable version",
-            "indent": 145,
-            "color": "black"
+            "value": "Install the latest Stable version"
           }
         ],
         "checkIdList": [
           {
             "id": "not_updated"
+          },
+          {
+            "id": "direct3d_10_0"            
           }
         ]
-      },
-      "suffixItemList": [
-      ]
+      }
     },
     {
       "date": "{{release_date}}",
@@ -65,168 +60,165 @@
         {
           "$type":"ORTS.Record, Menu",
           "value": "{{latest_version}}",
-          "label": "Latest version available",
-          "indent": 145,
-          "color": "black"
+          "label": "Latest version available"
         },
         {
-          "$type":"ORTS.Record, Menu",
+	      "$type":"ORTS.Record, Menu",
           "value": "{{installed_version}}",
-          "label": "Installed version",
-          "indent": 145,
-          "color": "black"
+          "label": "Installed version"
         },
-        {
-          "$type":"ORTS.Record, Menu",
+	    {
+	      "$type":"ORTS.Record, Menu",
           "value": "{{update_mode}}   (To change Update Mode, use Options > System.)",
-          "label": "Update mode",
-          "indent": 145,
-          "color": "black"
+          "label": "Update mode"
         }
       ],
-      "metLists": {
+      "met": {
         "itemList": [
+          {
+            "$type":"ORTS.Heading, Menu",
+            "label": "New version available"
+          },
           {
             "$type":"ORTS.Link, Menu",
             "value": "Find out on-line what's new in this version.",
-            "url": "https://www.openrails.org/download/changes/",
-            "label": "What's new",
-            "indent": 145,
-            "color": "black"
+            "Url": "https://www.openrails.org/download/changes/",
+            "label": "What's new"
           },
           {
             "$type":"ORTS.Update, Menu",
             "value": "Install the latest Testing version",
-            "label": "Install",
-            "indent": 145,
-            "color": "black"
+            "label": "Install"
           }
         ],
         "checkIdList": [
           {
             "id": "not_updated"
+          },
+          {
+            "id": "direct3d_10_0"
           }
         ]
-      },
-      "suffixItemList": [
-      ]
+      }
     },
-    {
+	  {
       "date": "{{release_date}}",
       "title": "Updates for Open Rails",
-      "updateMode": "unstable",
-      "comment": "No special checks for the latest version",
+	    "updateMode": "unstable",
+	    "comment": "No special checks for the latest version",
       "prefixItemList": [
         {
           "$type":"ORTS.Record, Menu",
           "value": "{{latest_version}}",
-          "label": "Latest version available",
-          "indent": 145,
-          "color": "black"
+          "label": "Latest version available"
         },
         {
-          "$type":"ORTS.Record, Menu",
+		      "$type":"ORTS.Record, Menu",
           "value": "{{installed_version}}",
-          "label": "Installed version",
-          "indent": 145,
-          "color": "black"
+          "label": "Installed version"
         },
         {
-          "$type":"ORTS.Record, Menu",
+	        "$type":"ORTS.Record, Menu",
           "value": "{{update_mode}}   (To change Update Mode, use Options > System.)",
-          "label": "Update mode",
-          "indent": 145,
-          "color": "black"
+          "label": "Update mode"
         }
       ],
-      "metLists": {
+      "met": {
         "itemList": [
+          {
+            "$type":"ORTS.Heading, Menu",
+            "label": "New version available"
+          },
           {
             "$type":"ORTS.Link, Menu",
             "value": "Find out on-line what's new in this version.",
-            "url": "https://james-ross.co.uk/projects/or",
-            "label": "What's new",
-            "indent": 145,
-            "color": "black"
+            "Url": "https://james-ross.co.uk/projects/or",
+            "label": "What's new"
           },
           {
             "$type":"ORTS.Update, Menu",
             "value": "Install the latest Unstable version",
-            "label": "Install",
-            "indent": 145,
-            "color": "black"
+            "label": "Install"
           }
         ],
         "checkIdList": [
           {
             "id": "not_updated"
+          },
+          {
+            "id": "direct3d_10_0"
           }
         ]
-      },
-      "suffixItemList": [
-    ]
-    }  
+      }
+    }	
   ],
   "checkList": [
     {
       "id": "not_updated",
-      "comment": "If up to date, then latest_version == installed_version or latest_version == 'none'",
-      "includesAnyOf": [],
-      "excludesAnyOf": [
+      "comment": "If latest_version == installed_version or update_mode == 'none', then up to date so exclude",
+	    "anyOfList": [
         {
-          "$type":"ORTS.Contains, Menu",
-          "name": "installed_version",
-          "value": "{{latest_version}}"
+          "$type":"ORTS.Excludes, Menu",
+          "allOfList" : [
+            {
+	            "$type":"ORTS.Contains, Menu",
+              "property": "{{installed_version}}",
+	            "value": "{{latest_version}}"
+            }
+          ]
         },
-        {
-          "$type":"ORTS.Contains, Menu",
-          "name": "none",
-          "value": "{{latest_version}}"
+		    {		
+          "$type":"ORTS.Excludes, Menu",
+          "allOfList" : [
+            {
+	            "$type":"ORTS.Contains, Menu",
+              "property": "{{update_mode}}",
+	            "value": "none"
+            }
+          ]
         }
-      ],
-    "unmetItemList": [
+      ],		
+      "unmetItemList": [
         {
-          "$type":"ORTS.Link, Menu",
+	        "$type":"ORTS.Link, Menu",
           "value": "Find out on-line what was new in your installed version.",
           "url": "https://www.openrails.org/discover/latest_stable_version",
-          "label": "What's new",
-          "indent": 145,
-          "color": "black"
+          "label": "What's new"
         }
       ]
     },
     {
-      "id": "not_direct3d_10_0",
+      "id": "direct3d_10_0",
       "comment": "Windows 7 onwards have software but may lack hardware for Direct3D 10.0",
-      "includesAnyOf": [
+      "anyOfList": [
         {
-          "$type":"ORTS.Contains, Menu",
-          "name": "direct3d",
-          "value": "10_0"
-        }
-      ],
-      "excludesAllOf": [],
-    "unmetItemList": [
+          "$type":"ORTS.Includes, Menu",
+           "allOfList": [
+              {
+               "$type":"ORTS.Contains, Menu",
+                "property": "{{direct3d}}",
+                "value": "10_0"
+              }
+            ]
+          }
+       ],
+       "unmetItemList": [
         {
-          "$type":"ORTS.Heading, Menu",
+	        "$type":"ORTS.Heading, Menu",
           "label": "Install not available.",
           "color": "red"
         },
         {
-          "$type":"ORTS.Text, Menu",
-          "label": "This version cannot be installed on your system until the graphics card has been upgraded.",
-          "indent": 145,
-          "color": "black"
+	        "$type":"ORTS.Text, Menu",
+          "label": "This version cannot be installed on your system until the graphics card has been upgraded."
         },
         {
           "$type":"ORTS.Link, Menu",
           "value": "Find out on-line about graphics card needed.",
           "url": "https://www.openrails.org/learn/faq/#hardware_requirements",
-          "label": "Graphics card",
-          "indent": 145,
-          "color": "black"
+          "label": "Graphics card"
         }
       ]
-    }  
+    }	
   ]
 }
