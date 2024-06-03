@@ -1,236 +1,171 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
-    "type": "object",
-    "required": ["notificationList"],
-    "additionalProperties": false,
-    "properties": {
-        "$schema": {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Schema for notifications/menu",
+  "type": "object",
+  "$defs": {
+	 "item": {
+       "type": "object",
+       "properties": {
+          "$type": {
             "type": "string"
-        },
-        "notificationList": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "required": ["name", "description"],
-                "additionalProperties": false,
-                "properties": {
-                    "date": {
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "updateChannel": {
-                        "type": "string",
-                        "enum": ["stable", "testing", "unstable"]
-                    },
-                    "prefixItemList": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/item"
-                        }
-                    },
-                    "metLists": {
-                        "type": "object",
-                        "required": ["itemList", "checkIdList"],
-                        "additionalProperties": false,
-                        "properties": {
-                            "itemList": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/definitions/item"
-                                }
-                            },
-                            "checkIdList": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "required": ["id"],
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "id": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "suffixItemList": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/item"
-                        }
-                    }
-                }
-            }
-        },
-        "checkList": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "required": ["id", "description"],
-                "additionalProperties": false,
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "includesAnyOf": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/check"
-                        }
-                    },
-                    "excludesAllOf": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/check"
-                        }
-                    },
-                    "unmetItemList": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/item"
-                        }
-                    }
-                }
-            }
-        }
+          },
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "indent": {
+            "type": "number"
+          },
+          "color": {
+            "type": "string"
+          }
+	    },
+		"required": [
+          "$type",
+          "value",
+          "label"
+        ]
+	  }
     },
-    "definitions": {
-        "item": {
-            "oneOf": [
-                {
-                    "type": "object",
-                    "required": ["$type", "label"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "$type": {
-                            "const": "ORTS.Text, Menu"
-                        },
-                        "label": {
-                            "type": "string"
-                        },
-                        "indent": {
-                            "type": "integer"
-                        },
-                        "color": {
-                            "type": "string"
-                        }
-                    }
-                },
-                {
-                    "type": "object",
-                    "required": ["$type", "label"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "$type": {
-                            "const": "ORTS.Heading, Menu"
-                        },
-                        "label": {
-                            "type": "string"
-                        },
-                        "indent": {
-                            "type": "integer"
-                        },
-                        "color": {
-                            "type": "string"
-                        }
-                    }
-                },
-                {
-                    "type": "object",
-                    "required": ["$type", "label", "url"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "$type": {
-                            "const": "ORTS.Link, Menu"
-                        },
-                        "label": {
-                            "type": "string"
-                        },
-                        "value": {
-                            "type": "string"
-                        },
-                        "url": {
-                            "type": "string"
-                        },
-                        "indent": {
-                            "type": "integer"
-                        },
-                        "color": {
-                            "type": "string"
-                        }
-                    }
-                },
-                {
-                    "type": "object",
-                    "required": ["$type", "label", "value"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "$type": {
-                            "const": "ORTS.Record, Menu"
-                        },
-                        "label": {
-                            "type": "string"
-                        },
-                        "value": {
-                            "type": "string"
-                        },
-                        "indent": {
-                            "type": "integer"
-                        },
-                        "color": {
-                            "type": "string"
-                        }
-                    }
-                },
-                {
-                    "type": "object",
-                    "required": ["$type", "label", "value"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "$type": {
-                            "const": "ORTS.Update, Menu"
-                        },
-                        "label": {
-                            "type": "string"
-                        },
-                        "value": {
-                            "type": "string"
-                        },
-                        "indent": {
-                            "type": "integer"
-                        },
-                        "color": {
-                            "type": "string"
-                        }
-                    }
-                }
-            ]
-        },
-        "check": {
-            "type": "object",
-            "required": ["$type"],
-            "additionalProperties": false,
-            "properties": {
-                "$type": {
-                    "type": "string",
-                    "enum": ["ORTS.Contains, Menu"]
-                },
-                "name": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "notificationList": {
+      "type": "array",
+      "item": { 
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "updateMode": {
+            "type": "string"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "prefixItemList": {
+            "type": "array",
+            "item": {
+              "$ref": "#/$defs/item"
             }
-        }
+          },
+          "met": {
+            "type": "object",
+            "properties": {
+              "itemList": {
+                "type": "array",
+                "item": {
+                  "$ref": "#/$defs/item"
+                }
+              },
+              "checkIdList": {
+                "type": "array",
+                "checkId": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "itemList",
+              "checkIdList"
+            ]
+          },
+          "suffixItemList": {
+            "type": "array",
+            "item": {
+              "$ref": "#/$defs/item"
+            }
+          }
+        },
+        "required": [
+          "date",
+          "title",
+          "met"
+        ]
+      }
+    },
+    "checkList": {
+      "type": "array",
+      "check": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "anyOfList": {
+            "type": "array",
+            "anyOf": {
+              "type": "object",
+              "properties": {
+                "$type": {
+                  "type": "string"
+                },
+                "allOfList": {
+                  "type": "array",
+                  "criteria": {
+                    "type": "object",
+                    "properties": {
+                      "$type": {
+                        "type": "string"
+                      },
+                      "property": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "$type",
+                      "property",
+                      "value"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "$type",
+                "allOf"
+              ]
+            }
+          },
+          "unmetItemList": {
+            "type": "array",
+            "itemList": {
+              "item": {
+                "$ref": "#/$defs/item"
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "anyOfList"
+        ]
+      }
     }
+  },
+  "required": [
+    "$schema",
+    "notificationList",
+    "checkList"
+  ]
 }
