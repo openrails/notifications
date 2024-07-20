@@ -1,41 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Schema for notifications/menu",
+  "title": "Schema for api/notifications/menu.json",
   "type": "object",
-  "$defs": {
-	 "item": {
-       "type": "object",
-       "properties": {
-          "$type": {
-            "type": "string"
-          },
-          "value": {
-            "type": "string"
-          },
-          "label": {
-            "type": "string"
-          },
-          "indent": {
-            "type": "number"
-          },
-          "color": {
-            "type": "string"
-          }
-	    },
-		"required": [
-          "$type",
-          "value",
-          "label"
-        ]
-	  }
-    },
   "properties": {
     "$schema": {
       "type": "string"
     },
     "notificationList": {
       "type": "array",
-      "item": { 
+      "items": {
         "type": "object",
         "properties": {
           "date": {
@@ -44,64 +17,71 @@
           "title": {
             "type": "string"
           },
-          "updateMode": {
-            "type": "string"
-          },
           "comment": {
             "type": "string"
           },
-          "prefixItemList": {
+          "itemList": {
             "type": "array",
-            "item": {
-              "$ref": "#/$defs/item"
-            }
-          },
-          "met": {
-            "type": "object",
-            "properties": {
-              "itemList": {
-                "type": "array",
-                "item": {
-                  "$ref": "#/$defs/item"
+            "items": {
+              "type": "object",
+              "properties": {
+                "$type": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "stableUrl": {
+                  "type": "string"
+                },
+                "testingUrl": {
+                  "type": "string"
+                },
+                "unstableUrl": {
+                  "type": "string"
+                },
+                "color": {
+                  "type": "string"
+                },
+                "indent": {
+                  "type": "number"
+                },
+                "includeIf": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "includeIfNot": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               },
-              "checkIdList": {
-                "type": "array",
-                "checkId": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "id"
-                  ]
-                }
-              }
-            },
-            "required": [
-              "itemList",
-              "checkIdList"
-            ]
-          },
-          "suffixItemList": {
-            "type": "array",
-            "item": {
-              "$ref": "#/$defs/item"
+              "required": [
+                "$type",
+                "label"
+              ]
             }
           }
         },
         "required": [
           "date",
           "title",
-          "met"
+          "itemList"
         ]
       }
     },
     "checkList": {
       "type": "array",
-      "check": {
+      "items": {
         "type": "object",
         "properties": {
           "id": {
@@ -112,15 +92,12 @@
           },
           "anyOfList": {
             "type": "array",
-            "anyOf": {
+            "items": {
               "type": "object",
               "properties": {
-                "$type": {
-                  "type": "string"
-                },
                 "allOfList": {
                   "type": "array",
-                  "criteria": {
+                  "items": {
                     "type": "object",
                     "properties": {
                       "$type": {
@@ -142,17 +119,8 @@
                 }
               },
               "required": [
-                "$type",
-                "allOf"
+                "allOfList"
               ]
-            }
-          },
-          "unmetItemList": {
-            "type": "array",
-            "itemList": {
-              "item": {
-                "$ref": "#/$defs/item"
-              }
             }
           }
         },
