@@ -70,7 +70,19 @@
                 "label"
               ]
             }
-          }
+          },
+          "includeIf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "includeIfNot": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }          
         },
         "required": [
           "date",
