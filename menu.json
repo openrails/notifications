@@ -1,249 +1,113 @@
 {
-    "$schema": "./schema.json",
-    "notificationList": [
+  "$schema": "./schema.json",
+  "notificationList": [
+    {
+      "date": "{{release_date}}",
+      "title": "Updates for Open Rails",
+      "comment": "Checks ready_to_update",
+      "itemList": [
         {
-            "date": "{{release_date}}",
-            "name": "Updates for Open Rails",
-            "description": "No special checks for the latest version",
-            "updateChannel": "stable",
-            "prefixItemList": [
-                {
-                    "$type": "ORTS.Record, Menu",
-                    "label": "New version available",
-                    "value": "{{new_version}}",
-                    "indent": 140,
-                    "color": "black"
-                },
-                {
-                    "$type": "ORTS.Record, Menu",
-                    "label": "Installed version",
-                    "value": "{{installed_version}}",
-                    "indent": 140,
-                    "color": "black"
-                },
-                {
-                    "$type": "ORTS.Record, Menu",
-                    "label": "Update mode",
-                    "value": "{{update_mode}}   (To change Update Mode, use Options > System.)",
-                    "indent": 140,
-                    "color": "black"
-                }
-            ],
-            "metLists": {
-                "itemList": [
-                    {
-                        "$type": "ORTS.Link, Menu",
-                        "label": "What's new",
-                        "value": "Find out on-line what's new in this version.",
-                        "url": "https://www.openrails.org/discover/latest_stable_version",
-                        "indent": 140,
-                        "color": "black"
-                    },
-                    {
-                        "$type": "ORTS.Update, Menu",
-                        "label": "Install",
-                        "value": "Install the new Stable version",
-                        "indent": 140,
-                        "color": "black"
-                    }
-                ],
-                "checkIdList": [
-                    {
-                        "id": "not_updated"
-                    }
-                ]
-            },
-            "suffixItemList": [
-                {
-                    "$type": "ORTS.Text, Menu",
-                    "label": "   (To change Update Mode, use Options > System.)",
-                    "indent": 140,
-                    "color": "black"
-                }
-            ]
+          "$type":"ORTS.Record, Menu",
+          "label": "Latest version available",
+          "value": "{{latest_version}}"
         },
         {
-            "date": "{{release_date}}",
-            "name": "Updates for Open Rails",
-            "description": "No special checks for the latest version",
-            "updateChannel": "testing",
-            "prefixItemList": [
-                {
-                    "$type": "ORTS.Record, Menu",
-                    "label": "New version available",
-                    "value": "{{new_version}}",
-                    "indent": 140,
-                    "color": "black"
-                },
-                {
-                    "$type": "ORTS.Record, Menu",
-                    "label": "Installed version",
-                    "value": "{{installed_version}}",
-                    "indent": 140,
-                    "color": "black"
-                },
-                {
-                    "$type": "ORTS.Record, Menu",
-                    "label": "Update mode",
-                    "value": "{{update_mode}}   (To change Update Mode, use Options > System.)",
-                    "indent": 140,
-                    "color": "black"
-                }
-            ],
-            "metLists": {
-                "itemList": [
-                    {
-                        "$type": "ORTS.Link, Menu",
-                        "label": "What's new",
-                        "value": "Find out on-line what's new in this version.",
-                        "url": "https://www.openrails.org/download/changes/",
-                        "indent": 140,
-                        "color": "black"
-                    },
-                    {
-                        "$type": "ORTS.Update, Menu",
-                        "label": "Install",
-                        "value": "Install the new Testing version",
-                        "indent": 140,
-                        "color": "black"
-                    }
-                ],
-                "checkIdList": [
-                    {
-                        "id": "not_updated"
-                    }
-                ]
-            },
-            "suffixItemList": [
-                {
-                    "$type": "ORTS.Text, Menu",
-                    "label": "   (To change Update Mode, use Options > System.)",
-                    "indent": 140,
-                    "color": "black"
-                }
-            ]
+          "$type":"ORTS.Record, Menu",
+          "label": "Installed version",
+          "value": "{{installed_version}}"
         },
         {
-            "date": "{{release_date}}",
-            "name": "Updates for Open Rails",
-            "description": "No special checks for the latest version",
-            "updateChannel": "unstable",
-            "prefixItemList": [
-                {
-                    "$type": "ORTS.Record, Menu",
-                    "label": "New version available",
-                    "value": "{{new_version}}",
-                    "indent": 140,
-                    "color": "black"
-                },
-                {
-                    "$type": "ORTS.Record, Menu",
-                    "label": "Installed version",
-                    "value": "{{installed_version}}",
-                    "indent": 140,
-                    "color": "black"
-                },
-                {
-                    "$type": "ORTS.Record, Menu",
-                    "label": "Update mode",
-                    "value": "{{update_mode}}   (To change Update Mode, use Options > System.)",
-                    "indent": 140,
-                    "color": "black"
-                }
-            ],
-            "metLists": {
-                "itemList": [
-                    {
-                        "$type": "ORTS.Link, Menu",
-                        "label": "What's new",
-                        "value": "Find out on-line what's new in this version.",
-                        "url": "https://james-ross.co.uk/projects/or",
-                        "indent": 140,
-                        "color": "black"
-                    },
-                    {
-                        "$type": "ORTS.Update, Menu",
-                        "label": "Install",
-                        "value": "Install the new Unstable version",
-                        "indent": 140,
-                        "color": "black"
-                    }
-                ],
-                "checkIdList": [
-                    {
-                        "id": "not_updated"
-                    }
-                ]
-            },
-            "suffixItemList": [
-                {
-                    "$type": "ORTS.Text, Menu",
-                    "label": "(To change Update Mode, use Options > System.)",
-                    "indent": 140,
-                    "color": "black"
-                }
-            ]
+          "$type":"ORTS.Record, Menu",
+          "label": "Update mode",
+          "value": "{{update_mode}}   (To change Update Mode, use Options > System.)"
+        },
+        {
+          "$type":"ORTS.Link, Menu",
+          "includeIf": ["ready_to_update"],
+          "label": "What's new",
+          "value": "Find out on-line what's new in this version.",
+          "stableUrl": "https://www.openrails.org/discover/latest_stable_version",
+          "testingUrl": "https://www.openrails.org/download/changes/",
+          "unstableUrl": "https://james-ross.co.uk/projects/or"
+        },
+        {
+          "$type":"ORTS.Update, Menu",
+          "includeIf": ["ready_to_update"],
+          "label": "Install",
+          "value": "Install the latest version"
+        },
+        {
+          "$type":"ORTS.Link, Menu",
+          "includeIfNot": ["ready_to_update"],
+          "value": "Find out on-line what was new in your installed version.",
+          "stableUrl": "https://www.openrails.org/discover/latest_stable_version",
+          "testingUrl": "https://www.openrails.org/download/changes/",
+          "unstableUrl": "https://james-ross.co.uk/projects/or",
+          "label": "What was new"
         }
-    ],
-    "checkList": [
+      ]
+    },  
+    {
+      "date": "2023-08-31",
+      "title": "UK Train Sim closes",
+      "comment": "Announcement of general interest",
+      "itemList": [
         {
-            "id": "not_updated",
-            "description": "If up to date, then new_version == installed_version or 'already updated'",
-            "includesAnyOf": [],
-            "excludesAllOf": [
-                {
-                    "$type": "ORTS.Contains, Menu",
-                    "name": "installed_version",
-                    "value": "{{new_version}}"
-                },
-                {
-                    "$type": "ORTS.Contains, Menu",
-                    "name": "already updated",
-                    "value": "{{new_version}}"
-                }
-            ],
-            "unmetItemList": [
-                {
-                    "$type": "ORTS.Link, Menu",
-                    "label": "What's new",
-                    "value": "Find out on-line what was new in your installed version.",
-                    "url": "https://www.openrails.org/discover/latest_stable_version",
-                    "indent": 140,
-                    "color": "black"
-                }
-            ]
+          "$type":"ORTS.Heading, Menu",
+          "label": "UK Train Sim"
         },
         {
-            "id": "not_direct3d_10_0",
-            "description": "Windows 7 onwards have software but may lack hardware for Direct3D 10.0",
-            "includesAnyOf": [
-                {
-                    "$type": "ORTS.Contains, Menu",
-                    "name": "direct3d",
-                    "value": "10_0"
-                }
-            ],
-            "unmetItemList": [
-                {
-                    "$type": "ORTS.Heading, Menu",
-                    "label": "Install not available.",
-                    "color": "red"
-                },
-                {
-                    "$type": "ORTS.Text, Menu",
-                    "label": "This version cannot be installed on your system until the graphics card has been upgraded.",
-                    "indent": 140,
-                    "color": "black"
-                },
-                {
-                    "$type": "ORTS.Link, Menu",
-                    "label": "Graphics card",
-                    "value": "Find out on-line about graphics card needed.",
-                    "url": "https://www.openrails.org/learn/faq/#hardware_requirements",
-                    "indent": 140,
-                    "color": "black"
-                }
-            ]
+          "$type":"ORTS.Text, Menu",
+          "label": "After many years of providing UK-based content, UK Train Sim has closed."
+        },
+        {
+          "$type":"ORTS.Text, Menu",
+          "label": "The extensive file library has been stored on-line by the Internet Archive."
+        },        
+        {
+          "$type":"ORTS.Link, Menu",
+          "label": "Archive",
+          "value": "Files are saved in batches of 1000 files, starting here:",
+          "url": "https://archive.org/details/ukts-archive-files-1-1000"
         }
-    ]
+      ]
+    } 
+  ],
+  "checkList": [
+    {
+      "id": "ready_to_update",
+      "comment": "Include if latest_version != installed_version && update_mode != 'none'",
+      "anyOfList": [
+        {
+          "allOfList" : [
+            {
+              "$type":"ORTS.NotContains, Menu",
+              "property": "installed_version",
+              "value": "{{latest_version}}"
+            },
+            {
+              "$type":"ORTS.NotContains, Menu",
+              "property": "update_mode",
+              "value": "none"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "demo_model_1_route_installed",
+      "comment": "Include if installed_routes.Coontains('SCE'), i.e. folder named for 'Scottish Capitals Express",
+      "anyOfList": [
+        {
+          "allOfList" : [
+            {
+	            "$type":"ORTS.Contains, Menu",
+              "property": "{{installed_routes}}",
+	            "value": "SCE"
+            }
+          ]
+        }
+      ]
+    }    
+  ]
 }
