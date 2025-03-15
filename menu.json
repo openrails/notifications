@@ -1,113 +1,113 @@
 {
-  "$schema": "./schema.json",
-  "notificationList": [
-    {
-      "date": "{{release_date}}",
-      "title": "Updates for Open Rails",
-      "comment": "Checks ready_to_update",
-      "itemList": [
+    "$schema": "./schema.json",
+    "notificationList": [
         {
-          "$type":"ORTS.Record, Menu",
-          "label": "Latest version available",
-          "value": "{{latest_version}}"
+            "date": "{{release_date}}",
+            "title": "Updates for Open Rails",
+            "comment": "Checks ready_to_update",
+            "itemList": [
+                {
+                    "$type": "ORTS.Record, Menu",
+                    "label": "Latest version available",
+                    "value": "{{latest_version}}"
+                },
+                {
+                    "$type": "ORTS.Record, Menu",
+                    "label": "Installed version",
+                    "value": "{{installed_version}}"
+                },
+                {
+                    "$type": "ORTS.Record, Menu",
+                    "label": "Update mode",
+                    "value": "{{update_mode}}   (To change Update Mode, use Options > System.)"
+                },
+                {
+                    "$type": "ORTS.Link, Menu",
+                    "includeIf": ["ready_to_update"],
+                    "label": "What's new",
+                    "value": "Find out on-line what's new in this version.",
+                    "stableUrl": "https://www.openrails.org/discover/latest_stable_version",
+                    "testingUrl": "https://www.openrails.org/download/changes/",
+                    "unstableUrl": "https://james-ross.co.uk/projects/or"
+                },
+                {
+                    "$type": "ORTS.Update, Menu",
+                    "includeIf": ["ready_to_update"],
+                    "label": "Install",
+                    "value": "Install the latest version"
+                },
+                {
+                    "$type": "ORTS.Link, Menu",
+                    "includeIfNot": ["ready_to_update"],
+                    "value": "Find out on-line what was new in your installed version.",
+                    "stableUrl": "https://www.openrails.org/discover/latest_stable_version",
+                    "testingUrl": "https://www.openrails.org/download/changes/",
+                    "unstableUrl": "https://james-ross.co.uk/projects/or",
+                    "label": "What was new"
+                }
+            ]
         },
         {
-          "$type":"ORTS.Record, Menu",
-          "label": "Installed version",
-          "value": "{{installed_version}}"
-        },
-        {
-          "$type":"ORTS.Record, Menu",
-          "label": "Update mode",
-          "value": "{{update_mode}}   (To change Update Mode, use Options > System.)"
-        },
-        {
-          "$type":"ORTS.Link, Menu",
-          "includeIf": ["ready_to_update"],
-          "label": "What's new",
-          "value": "Find out on-line what's new in this version.",
-          "stableUrl": "https://www.openrails.org/discover/latest_stable_version",
-          "testingUrl": "https://www.openrails.org/download/changes/",
-          "unstableUrl": "https://james-ross.co.uk/projects/or"
-        },
-        {
-          "$type":"ORTS.Update, Menu",
-          "includeIf": ["ready_to_update"],
-          "label": "Install",
-          "value": "Install the latest version"
-        },
-        {
-          "$type":"ORTS.Link, Menu",
-          "includeIfNot": ["ready_to_update"],
-          "value": "Find out on-line what was new in your installed version.",
-          "stableUrl": "https://www.openrails.org/discover/latest_stable_version",
-          "testingUrl": "https://www.openrails.org/download/changes/",
-          "unstableUrl": "https://james-ross.co.uk/projects/or",
-          "label": "What was new"
+            "date": "2023-08-31",
+            "title": "UK Train Sim closes",
+            "comment": "Announcement of general interest",
+            "itemList": [
+                {
+                    "$type": "ORTS.Heading, Menu",
+                    "label": "UK Train Sim"
+                },
+                {
+                    "$type": "ORTS.Text, Menu",
+                    "label": "After many years of providing UK-based content, UK Train Sim has closed."
+                },
+                {
+                    "$type": "ORTS.Text, Menu",
+                    "label": "The extensive file library has been stored on-line by the Internet Archive."
+                },
+                {
+                    "$type": "ORTS.Link, Menu",
+                    "label": "Archive",
+                    "value": "Files are saved in batches of 1000 files, starting here:",
+                    "url": "https://archive.org/details/ukts-archive-files-1-1000"
+                }
+            ]
         }
-      ]
-    },  
-    {
-      "date": "2023-08-31",
-      "title": "UK Train Sim closes",
-      "comment": "Announcement of general interest",
-      "itemList": [
+    ],
+    "checkList": [
         {
-          "$type":"ORTS.Heading, Menu",
-          "label": "UK Train Sim"
+            "id": "ready_to_update",
+            "comment": "Include if latest_version != installed_version && update_mode != 'none'",
+            "anyOfList": [
+                {
+                    "allOfList": [
+                        {
+                            "$type": "ORTS.NotContains, Menu",
+                            "property": "installed_version",
+                            "value": "{{latest_version}}"
+                        },
+                        {
+                            "$type": "ORTS.NotContains, Menu",
+                            "property": "update_mode",
+                            "value": "none"
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "$type":"ORTS.Text, Menu",
-          "label": "After many years of providing UK-based content, UK Train Sim has closed."
-        },
-        {
-          "$type":"ORTS.Text, Menu",
-          "label": "The extensive file library has been stored on-line by the Internet Archive."
-        },        
-        {
-          "$type":"ORTS.Link, Menu",
-          "label": "Archive",
-          "value": "Files are saved in batches of 1000 files, starting here:",
-          "url": "https://archive.org/details/ukts-archive-files-1-1000"
+            "id": "demo_model_1_route_installed",
+            "comment": "Include if installed_routes.Coontains('SCE'), i.e. folder named for 'Scottish Capitals Express",
+            "anyOfList": [
+                {
+                    "allOfList": [
+                        {
+                            "$type": "ORTS.Contains, Menu",
+                            "property": "{{installed_routes}}",
+                            "value": "SCE"
+                        }
+                    ]
+                }
+            ]
         }
-      ]
-    } 
-  ],
-  "checkList": [
-    {
-      "id": "ready_to_update",
-      "comment": "Include if latest_version != installed_version && update_mode != 'none'",
-      "anyOfList": [
-        {
-          "allOfList" : [
-            {
-              "$type":"ORTS.NotContains, Menu",
-              "property": "installed_version",
-              "value": "{{latest_version}}"
-            },
-            {
-              "$type":"ORTS.NotContains, Menu",
-              "property": "update_mode",
-              "value": "none"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "demo_model_1_route_installed",
-      "comment": "Include if installed_routes.Coontains('SCE'), i.e. folder named for 'Scottish Capitals Express",
-      "anyOfList": [
-        {
-          "allOfList" : [
-            {
-	            "$type":"ORTS.Contains, Menu",
-              "property": "{{installed_routes}}",
-	            "value": "SCE"
-            }
-          ]
-        }
-      ]
-    }    
-  ]
+    ]
 }
