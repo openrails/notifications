@@ -82,12 +82,12 @@
                     "allOfList": [
                         {
                             "$type": "ORTS.NotContains, Menu",
-                            "property": "installed_version",
+                            "property": "{{installed_version}}",
                             "value": "{{latest_version}}"
                         },
                         {
                             "$type": "ORTS.NotContains, Menu",
-                            "property": "update_mode",
+                            "property": "{{update_mode}}",
                             "value": "none"
                         }
                     ]
