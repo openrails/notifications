@@ -96,7 +96,7 @@
         },
         {
             "id": "demo_model_1_route_installed",
-            "comment": "Include if installed_routes.Coontains('SCE'), i.e. folder named for 'Scottish Capitals Express",
+            "comment": "Include if installed_routes.Contains('SCE'), i.e. folder named for 'Scottish Capitals Express",
             "anyOfList": [
                 {
                     "allOfList": [
