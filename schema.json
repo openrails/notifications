@@ -37,6 +37,9 @@
                                 "url": {
                                     "type": "string"
                                 },
+                                "form": {
+                                    "type": "string"
+                                },
                                 "stableUrl": {
                                     "type": "string"
                                 },

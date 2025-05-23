@@ -71,6 +71,39 @@
                     "url": "https://archive.org/details/ukts-archive-files-1-1000"
                 }
             ]
+        },
+        {
+            "date": "2025-05-23",
+            "title": "Opt-in telemetry for system data",
+            "includeIf": ["update_mode_testing_unstable", "telemetry_system_undecided"],
+            "itemList": [
+                {
+                    "$type": "ORTS.Heading, Menu",
+                    "label": "Opt-in telemetry for system data"
+                },
+                {
+                    "$type": "ORTS.Text, Menu",
+                    "label": "We would like to invite you to participate in our telemetry program."
+                },
+                {
+                    "$type": "ORTS.Text, Menu",
+                    "label": "Data collected: Application, runtime, operating system, and hardware properties."
+                },
+                {
+                    "$type": "ORTS.Text, Menu",
+                    "label": "Telemetry is currently 'undecided (off)'. Choose 'on' or 'off' to hide this notification."
+                },
+                {
+                    "$type": "ORTS.Dialog, Menu",
+                    "label": "Telemetry Options",
+                    "value": "Preview data and turn telemetry on or off",
+                    "form": "TelemetryForm"
+                },
+                {
+                    "$type": "ORTS.Text, Menu",
+                    "label": "You can return to the telemetry settings at any time from 'Options' > 'General'."
+                }
+            ]
         }
     ],
     "checkList": [
@@ -89,6 +122,45 @@
                             "$type": "ORTS.NotContains, Menu",
                             "property": "{{update_mode}}",
                             "value": "none"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "update_mode_testing_unstable",
+            "comment": "Include if update mode is testing or unstable",
+            "anyOfList": [
+                {
+                    "allOfList": [
+                        {
+                            "$type": "ORTS.Equals, Menu",
+                            "property": "{{update_mode}}",
+                            "value": "Testing"
+                        }
+                    ]
+                },
+                {
+                    "allOfList": [
+                        {
+                            "$type": "ORTS.Equals, Menu",
+                            "property": "{{update_mode}}",
+                            "value": "Unstable"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "telemetry_system_undecided",
+            "comment": "Include if system telemetry is undecided (neither on nor off)",
+            "anyOfList": [
+                {
+                    "allOfList": [
+                        {
+                            "$type": "ORTS.Equals, Menu",
+                            "property": "{{Settings.Telemetry.StateSystem}}",
+                            "value": "1899-01-01"
                         }
                     ]
                 }
