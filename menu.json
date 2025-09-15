@@ -114,12 +114,12 @@
                 {
                     "allOfList": [
                         {
-                            "$type": "ORTS.NotContains, Menu",
+                            "$type": "ORTS.NotEquals, Menu",
                             "property": "{{installed_version}}",
                             "value": "{{latest_version}}"
                         },
                         {
-                            "$type": "ORTS.NotContains, Menu",
+                            "$type": "ORTS.NotEquals, Menu",
                             "property": "{{update_mode}}",
                             "value": "none"
                         }
