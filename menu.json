@@ -22,6 +22,12 @@
                     "value": "{{update_mode}}   (To change Update Mode, use Options > System.)"
                 },
                 {
+                    "$type": "ORTS.Heading, Menu",
+					"includeIf": ["ready_to_update"],
+                    "label": "New version available",
+					"color": "blue"
+                },                
+                {
                     "$type": "ORTS.Link, Menu",
                     "includeIf": ["ready_to_update"],
                     "label": "What's new",
@@ -44,6 +50,13 @@
                     "testingUrl": "https://www.openrails.org/download/changes/",
                     "unstableUrl": "https://james-ross.co.uk/projects/or",
                     "label": "What was new"
+                },
+                {
+                    "$type": "ORTS.Refresh, Menu",
+                    "includeIf": ["update_mode_unstable"],
+                    "includeIfNot": ["ready_to_update"],
+                    "label": "Refresh",
+                    "value": "Refresh the 'Latest version available'"
                 }
             ]
         },
@@ -122,6 +135,21 @@
                             "$type": "ORTS.NotEquals, Menu",
                             "property": "{{update_mode}}",
                             "value": "none"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "update_mode_unstable",
+            "comment": "Include if update mode is unstable",
+            "anyOfList": [
+                {
+                    "allOfList": [
+                        {
+                            "$type": "ORTS.Equals, Menu",
+                            "property": "{{update_mode}}",
+                            "value": "Unstable"
                         }
                     ]
                 }
