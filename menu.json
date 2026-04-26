@@ -50,13 +50,6 @@
                     "testingUrl": "https://www.openrails.org/download/changes/",
                     "unstableUrl": "https://james-ross.co.uk/projects/or",
                     "label": "What was new"
-                },
-                {
-                    "$type": "ORTS.Refresh, Menu",
-                    "includeIf": ["update_mode_unstable"],
-                    "includeIfNot": ["ready_to_update"],
-                    "label": "Refresh",
-                    "value": "Refresh the 'Latest version available'"
                 }
             ]
         },
