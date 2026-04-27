@@ -38,7 +38,7 @@
                 },
                 {
                     "$type": "ORTS.Update, Menu",
-                    "includeIf": ["ready_to_update"],
+                    "includeIf": ["ready_to_update", "gltf_compatible"],
                     "label": "Install",
                     "value": "Install the latest version"
                 },
@@ -50,7 +50,36 @@
                     "testingUrl": "https://www.openrails.org/download/changes/",
                     "unstableUrl": "https://james-ross.co.uk/projects/or",
                     "label": "What was new"
-                }
+                },
+				{
+                    "$type": "ORTS.Heading, Menu",
+                    "includeIf": ["ready_to_update", "update_mode_stable"],
+					"includeIfNot": ["gltf_compatible"],
+                    "label": "This version cannot be installed on your system until the graphics card has been upgraded.",
+					"color": "red"
+                },
+				{
+                    "$type": "ORTS.Heading, Menu",
+                    "includeIf": ["ready_to_update", "update_mode_testing_unstable"],
+					"includeIfNot": ["gltf_compatible"],
+                    "label": "WARNING: This version adds glTF which is not compatible with your graphics card.",
+					"color": "red"
+                },
+                {
+                    "$type": "ORTS.Update, Menu",
+                    "includeIf": ["ready_to_update", "update_mode_testing_unstable"],
+					"includeIfNot": ["gltf_compatible"],
+                    "label": "Install",
+                    "value": "Install the latest version"
+                },				
+				{
+                    "$type": "ORTS.Link, Menu",
+                    "includeIf": ["ready_to_update"],
+					"includeIfNot": ["gltf_compatible"],
+                    "value": "Find out on-line about graphics card needed.",
+					"url": "https://www.openrails.org/learn/faq/#hardware_requirements",
+					"label": "Graphics card"
+                },				
             ]
         },
         {
@@ -133,9 +162,24 @@
                 }
             ]
         },
+		{
+            "id": "update_mode_stable",
+            "comment": "Include if update mode is Stable",
+            "anyOfList": [
+                {
+                    "allOfList": [
+                        {
+                            "$type": "ORTS.Equals, Menu",
+                            "property": "{{update_mode}}",
+                            "value": "Stable"
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "id": "update_mode_unstable",
-            "comment": "Include if update mode is unstable",
+            "comment": "Include if update mode is Unstable",
             "anyOfList": [
                 {
                     "allOfList": [
@@ -150,7 +194,7 @@
         },
         {
             "id": "update_mode_testing_unstable",
-            "comment": "Include if update mode is testing or unstable",
+            "comment": "Include if update mode is Testing or Unstable",
             "anyOfList": [
                 {
                     "allOfList": [
@@ -197,6 +241,21 @@
                             "$type": "ORTS.Contains, Menu",
                             "property": "{{installed_routes}}",
                             "value": "SCE"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "gltf_compatible",
+            "comment": "Windows 7 onwards has software but may lack hardware for Direct3D v10.0",
+            "anyOfList": [
+                {
+                    "allOfList": [
+                        {
+                            "$type": "ORTS.Contains, Menu",
+                            "property": "{{direct3d}}",
+                            "value": "10_0"
                         }
                     ]
                 }
