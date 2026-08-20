@@ -268,19 +268,9 @@
                 {
                     "allOfList": [
                         {
-                            "$type": "ORTS.NotContains, Menu",
+                            "$type": "ORTS.Contains, Menu",
                             "property": "{{direct3d}}",
-                            "value": "9_1"
-                        },
-                        {
-                            "$type": "ORTS.NotContains, Menu",
-                            "property": "{{direct3d}}",
-                            "value": "9_2"
-                        },
-                        {
-                            "$type": "ORTS.NotContains, Menu",
-                            "property": "{{direct3d}}",
-                            "value": "9_3"
+                            "value": "10_0"
                         }						
                     ]
                 }
