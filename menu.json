@@ -108,9 +108,12 @@
             ]
         },
         {
-            "date": "2025-05-23",
+            "date": "2026-09-04",
             "title": "Opt-in telemetry for system data",
-            "includeIf": ["update_mode_testing_unstable", "telemetry_system_undecided"],
+            "includeIf": [
+                "telemetry_system_undecided",
+                "telemetry_1pct_stable_100pct_testing_unstable"
+            ],
             "itemList": [
                 {
                     "$type": "ORTS.Heading, Menu",
@@ -226,6 +229,44 @@
                             "$type": "ORTS.Equals, Menu",
                             "property": "{{Settings.Telemetry.StateSystem}}",
                             "value": "1899-01-01"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "telemetry_1pct_stable_100pct_testing_unstable",
+            "comment": "Include 1% stable, 100% testing, 100% unstable versions",
+            "anyOfList": [
+                {
+                    "allOfList": [
+                        {
+                            "$type": "ORTS.Equals, Menu",
+                            "property": "{{update_mode}}",
+                            "value": "Stable"
+                        },
+                        {
+                            "$type": "ORTS.LessThanOrEquals, Menu",
+                            "property": "{{Settings.Telemetry.RandomNumber1000}}",
+                            "value": "10"
+                        }
+                    ]
+                },
+                {
+                    "allOfList": [
+                        {
+                            "$type": "ORTS.Equals, Menu",
+                            "property": "{{update_mode}}",
+                            "value": "Testing"
+                        }
+                    ]
+                },
+                {
+                    "allOfList": [
+                        {
+                            "$type": "ORTS.Equals, Menu",
+                            "property": "{{update_mode}}",
+                            "value": "Unstable"
                         }
                     ]
                 }
