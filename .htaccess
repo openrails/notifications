@@ -1,0 +1,11 @@
+RewriteEngine on
+
+# This rewrite will map exact versions to their corresponding JSON files (e.g. `menu-1.6.1.json`)
+RewriteCond %{REQUEST_URI}~%{HTTP_USER_AGENT} "^(.*/[a-z-]+)\.json~Open Rails/([0-9.]+)"
+RewriteCond %{DOCUMENT_ROOT}%1-%2.json -f
+RewriteRule ^ %{DOCUMENT_ROOT}%1-%2.json [L]
+
+# This rewrite will map `major.minor` versions to their corresponding JSON files (e.g. `menu-1.6.x.json`)
+RewriteCond %{REQUEST_URI}~%{HTTP_USER_AGENT} "^(.*/[a-z-]+)\.json~Open Rails/([0-9]+\.[0-9]+)"
+RewriteCond %{DOCUMENT_ROOT}%1-%2.x.json -f
+RewriteRule ^ %{DOCUMENT_ROOT}%1-%2.x.json [L]
