@@ -37,12 +37,6 @@
                     "unstableUrl": "https://james-ross.co.uk/projects/or"
                 },
                 {
-                    "$type": "ORTS.Update, Menu",
-                    "includeIf": ["ready_to_update", "gltf_compatible"],
-                    "label": "Install",
-                    "value": "Install the latest version"
-                },
-                {
                     "$type": "ORTS.Link, Menu",
                     "includeIfNot": ["ready_to_update"],
                     "value": "Find out on-line what was new in your installed version.",
@@ -51,26 +45,39 @@
                     "unstableUrl": "https://james-ross.co.uk/projects/or",
                     "label": "What was new"
                 },
+                {
+                    "$type": "ORTS.Update, Menu",
+                    "includeIf": ["ready_to_update", "gltf_compatible", "win10_compatible"],
+                    "label": "Install",
+                    "value": "Install the latest version"
+                },
 				{
                     "$type": "ORTS.Heading, Menu",
-                    "includeIf": ["ready_to_update", "update_mode_stable"],
+                    "includeIf": ["ready_to_update"],
 					"includeIfNot": ["gltf_compatible"],
                     "label": "This version cannot be installed on your system until the graphics card has been upgraded.",
 					"color": "red"
                 },
 				{
-                    "$type": "ORTS.Heading, Menu",
-                    "includeIf": ["ready_to_update", "update_mode_testing_unstable"],
+                    "$type": "ORTS.Record, Menu",
+                    "includeIf": ["ready_to_update"],
 					"includeIfNot": ["gltf_compatible"],
-                    "label": "WARNING: This version adds glTF which is not compatible with your graphics card.",
+                    "label": "Installed version",
+					"value": "{{direct3d}}"
+                },				
+				{
+                    "$type": "ORTS.Heading, Menu",
+                    "includeIf": ["ready_to_update"],
+					"includeIfNot": ["win10_compatible"],
+                    "label": "This new version requires Windows version 10 or later.",
 					"color": "red"
                 },
-                {
-                    "$type": "ORTS.Update, Menu",
-                    "includeIf": ["ready_to_update", "update_mode_testing_unstable"],
-					"includeIfNot": ["gltf_compatible"],
-                    "label": "Install",
-                    "value": "Install the latest version"
+				{
+                    "$type": "ORTS.Record, Menu",
+                    "includeIf": ["ready_to_update"],
+					"includeIfNot": ["win10_compatible"],
+                    "label": "Installed version",
+					"value": "{{system}}"
                 },				
 				{
                     "$type": "ORTS.Link, Menu",
@@ -80,6 +87,14 @@
 					"url": "https://www.openrails.org/learn/faq/#hardware_requirements",
 					"label": "Graphics card"
                 },				
+				{
+                    "$type": "ORTS.Link, Menu",
+                    "includeIf": ["ready_to_update"],
+					"includeIfNot": ["win10_compatible"],
+                    "value": "Find out on-line about the software needed.",
+					"url": "https://www.openrails.org/learn/faq/#hardware_requirements",
+					"label": "Windows"
+                }
             ]
         },
         {
@@ -289,7 +304,7 @@
         },
         {
             "id": "gltf_compatible",
-            "comment": "Windows 7 onwards has software but may lack hardware for Direct3D v10.0",
+            "comment": "On adding glTF, Open Rails is no longer compatible with Direct3D 9 versions",
             "anyOfList": [
                 {
                     "allOfList": [
@@ -297,10 +312,30 @@
                             "$type": "ORTS.Contains, Menu",
                             "property": "{{direct3d}}",
                             "value": "10_0"
-                        }
+                        }						
                     ]
                 }
             ]
-        }
+        },
+        {
+            "id": "win10_compatible",
+            "comment": "On moving to .Net 6, Open Rails is no longer compatible with Windows version 7 or 8.1",
+            "anyOfList": [
+			{
+				"allOfList": [
+					{
+						"$type": "ORTS.NotContains, Menu",
+						"property": "{{system}}",
+						"value": "7"
+					},
+					{
+						"$type": "ORTS.NotContains, Menu",
+						"property": "{{system}}",
+						"value": "8"
+					}						
+				]
+            }
+			]
+        }		
     ]
 }
