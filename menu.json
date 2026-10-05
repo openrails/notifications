@@ -142,6 +142,40 @@
                     "label": "You can return to the telemetry settings at any time from 'Options' > 'General'."
                 }
             ]
+        },
+        {
+            "date": "2025-10-03",
+            "title": "UK Chiltern route update",
+            "itemList": [
+                {
+                    "$type": "ORTS.Heading, Menu",
+                    "label": "Chiltern route updated to v4"
+                },
+                {
+                    "$type": "ORTS.Text, Menu",
+                    "label": "Version 4 adds the scenery at Paddington, including both the main line station"
+                },
+                {
+                    "$type": "ORTS.Text, Menu",
+                    "label": "and the suburban/London Transport station alongside it."
+                },
+                {
+                    "$type": "ORTS.Text, Menu",
+                    "label": "Chiltern can be installed using Content > Auto Installed > Install."
+                },
+                {
+                    "$type": "ORTS.Link, Menu",
+                    "label": "Version details",
+                    "value": "Details of the update are available here:",
+                    "url": "https://github.com/DocMartin7644/Chiltern-Route-v4/releases"
+                },
+                {
+                    "$type": "ORTS.Link, Menu",
+                    "label": "Route details",
+                    "value": "Details of the route are available here:",
+                    "url": "https://github.com/DocMartin7644/Chiltern-Route-v4"
+                }
+            ]
         }
     ],
     "checkList": [
