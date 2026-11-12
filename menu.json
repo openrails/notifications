@@ -159,7 +159,7 @@
             ]
         },
         {
-            "date": "2025-10-03",
+            "date": "2026-10-03",
             "title": "UK Chiltern route update",
             "itemList": [
                 {
@@ -189,6 +189,38 @@
                     "label": "Route details",
                     "value": "Details of the route are available here:",
                     "url": "https://github.com/DocMartin7644/Chiltern-Route-v4"
+                }
+            ]
+        },
+       {
+            "date": "2026-11-12",
+            "title": "Cascais, Portugal route published",
+            "itemList": [
+                {
+                    "$type": "ORTS.Heading, Menu",
+                    "label": "Cascais route now available"
+                },
+                {
+                    "$type": "ORTS.Text, Menu",
+                    "label": "25km coastal route westward from Lisbon through urban, residential"
+                },
+                {
+                    "$type": "ORTS.Text, Menu",
+                    "label": "and seaside areas from 2001 period with timetables."
+                },
+                {
+                    "$type": "ORTS.Text, Menu",
+                    "label": "Some 1926 locos and trainsets included."
+                },
+                {
+                    "$type": "ORTS.Text, Menu",
+                    "label": "Cascais can be installed using Content > Auto Installed > Install."
+                },
+                {
+                    "$type": "ORTS.Link, Menu",
+                    "label": "Route details",
+                    "value": "Details of the route are available here:",
+                    "url": "https://github.com/cpvirtual/OR_CPV_Cascais"
                 }
             ]
         }
